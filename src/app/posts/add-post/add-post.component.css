@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-center;
+    padding-left: 30%;
+    padding-right: 30%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+.card-header{
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+}
+
+.card-header h1{
+    font-size: bold;
+    font-weight: 600;
+    padding-top: 10px;
+}
+
+
+.form-group{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.noEdit .form-group:not(:last-child){
+    padding-bottom: 23px;
+}
+
+.noEdit .form-group label{
+    color: #9E9E9E;
+    line-height: 1;
+}
+
