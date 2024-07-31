@@ -1,0 +1,13 @@
+button.border-secondry {
+    border-radius: 5px;
+    transition: all 0.3s ease; 
+}
+
+button.border-secondry:hover {
+    color: white !important;
+    background-color:  gray!important;
+}
+
+.fa{
+    margin-right: 10px;
+}

@@ -7,6 +7,14 @@ const routes: Routes = [
   {
     path: '', 
     component: HomeComponent,
+  },
+  {
+    path: 'posts', 
+    component: PostsListComponent,
+  },
+  {
+    path: '**', 
+    component: HomeComponent,
   }
 ];
 
