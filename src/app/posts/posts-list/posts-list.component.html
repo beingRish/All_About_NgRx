@@ -3,7 +3,7 @@
         <div class="card-header">
             <h1>Posts List</h1>
             <button type="button" class="btn btn-info mt-2 mb-3">
-                <a [routerLink]="['/add-post']">
+                <a [routerLink]="['/add']">
                     <i class="fa fa-add" aria-hidden="true"></i>
                     Add Post</a>
             </button>
@@ -25,6 +25,7 @@
                                 <td>{{ post.id }}</td>
                                 <td> {{ post.title }}</td>
                                 <td> {{ post.description }}</td>
+                                <td><a class="btn btn-secondary" [routerLink]="['/edit', post.id]">Update</a></td>
                             </tr>
                         </tbody>
                     </table>
