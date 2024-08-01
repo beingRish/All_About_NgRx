@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-post',
@@ -15,14 +15,43 @@ export class AddPostComponent implements OnInit{
   ngOnInit(): void {
     
     this.postForm = this.fb.group({
-      title: [''],
-      description: ['']
+      title: ['', [Validators.required, Validators.minLength(6)]],
+      description: ['', [Validators.required, Validators.minLength(10)]]
     });
-  
   }
 
-  onSubmit() {
-    // handle form submission
+  showTitleErrors() {
+    const descriptionForm = this.postForm.get('title');
+    if(descriptionForm?.touched && !descriptionForm.valid) {
+      if(descriptionForm.errors?.['required']) {
+        return 'Title is required';
+      }
+      if(descriptionForm?.errors?.['minlength']){
+        return 'Title should be of minimum 6 characters length';
+      }
+    }
+    return
+  }
+
+
+  showDescriptionErrors() {
+    const descriptionForm = this.postForm.get('description');
+    if(descriptionForm?.touched && !descriptionForm.valid) {
+      if(descriptionForm.errors?.['required']) {
+        return 'Description is required';
+      }
+      if(descriptionForm?.errors?.['minlength']){
+        return 'Description should be of minimum 10 characters length';
+      }
+    }
+    return
+  }
+
+  onAddPost() {
+    if(!this.postForm.valid){
+      return;
+    }
+    console.log(this.postForm.value);
   }
 
   onBack() {
