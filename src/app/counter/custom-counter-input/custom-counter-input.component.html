@@ -1,0 +1,15 @@
+<div class="text-center mt-4">
+    <h1>{{channelName$ | async}}</h1>
+</div>
+
+<div class="text-center mt-5">
+    <input type="text" placeholder="Enter value" class="form-control-sm mx-2" [(ngModel)]="value">
+    <button class="btn btn-info border-none " (click)="onAdd()">Add to counter</button>
+</div>
+
+<div class="mt-5 text-center">
+    <button (click)="onChangeChannel()" class="btn btn-info">Change Channel Name</button>
+</div>
+
+<br><br>
+
