@@ -5,29 +5,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
-import { PostsListComponent } from './posts/posts-list/posts-list.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
-import { AddPostComponent } from './posts/add-post/add-post.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { EditPostComponent } from './posts/edit-post/edit-post.component';
-import { CustomCounterInputComponent } from './counter/custom-counter-input/custom-counter-input.component';
 import { appReducer } from './store/app.state';
-import { CounterComponent } from './counter/couter/couter.component';
+import { CounterModule } from './counter/counter.module';
+import { postsModule } from './posts/posts.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    PostsListComponent,
-    AddPostComponent,
-    EditPostComponent,
-    CounterComponent,
-    CustomCounterInputComponent
   ],
   imports: [
     BrowserModule,
+    CounterModule,
+    postsModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

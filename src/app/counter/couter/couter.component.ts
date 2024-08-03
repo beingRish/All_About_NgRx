@@ -3,6 +3,8 @@ import { CounterState } from '../state/counter.state';
 import { Store } from '@ngrx/store';
 import { selectCount } from '../state/counter.selector';
 import { decrement, increament, reset } from '../state/counter.action';
+import { Observable } from 'rxjs';
+import { Counter } from 'src/app/models/counter.model';
 
 @Component({
   selector: 'app-couter',
