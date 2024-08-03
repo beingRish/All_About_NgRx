@@ -3,8 +3,11 @@ import { NgModule } from "@angular/core";
 import { AddPostComponent } from "./add-post/add-post.component";
 import { EditPostComponent } from "./edit-post/edit-post.component";
 import { PostsListComponent } from "./posts-list/posts-list.component";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { ReactiveFormsModule } from "@angular/forms";
 import { PostsRoutingModule } from "./posts-routing.module";
+import { StoreModule } from "@ngrx/store";
+import { postsReducer } from "./state/posts.reducer";
+import { POST_STATE_NAME } from "./state/posts.selector";
 
 @NgModule({
     declarations: [
@@ -14,9 +17,9 @@ import { PostsRoutingModule } from "./posts-routing.module";
     ],
     imports: [
         CommonModule,
-        PostsRoutingModule,
-        FormsModule,
         ReactiveFormsModule,
+        PostsRoutingModule,
+        StoreModule.forFeature(POST_STATE_NAME, postsReducer),
     ],
 })
 
