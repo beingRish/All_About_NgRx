@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/store/app.state';
+import { loginStart } from '../state/auth.action';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +15,7 @@ export class LoginComponent implements OnInit{
 
   constructor(
     private fb: FormBuilder,
+    private store: Store<AppState>
   ) {}
 
   ngOnInit(): void {
@@ -50,8 +54,8 @@ export class LoginComponent implements OnInit{
   }
 
   onLogin() {
-    if(!this.loginForm.valid){
-      return;
-    }
+    const email = this.loginForm.value.email;
+    const password = this.loginForm.value.password;
+    this.store.dispatch(loginStart({ email, password }))
   }
 }
