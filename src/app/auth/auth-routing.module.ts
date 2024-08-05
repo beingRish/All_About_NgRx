@@ -4,7 +4,7 @@ import { LoginComponent } from "./login/login.component";
 
 const routes: Routes = [
     {
-        path: '',
+        path: 'auth',
         children: [
             {
                 path: '', 
