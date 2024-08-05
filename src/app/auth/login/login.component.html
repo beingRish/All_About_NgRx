@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h1>Login</h1>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="noEdit">
+                <div class="form-group">
+                    <label>Enter Email</label>
+                    <input type="email" class="form-control" formControlName="email">
+                    <div class="text-danger">{{ showEmailErrors() }}</div>
+                </div>
+                <div class="form-group">
+                    <label>Enter Password</label>
+                    <input type="password" class="form-control" formControlName="password">
+                    <div class="text-danger">{{ showPasswordErrors() }}</div>
+                </div>
+
+                <div class="buttons text-end">
+                    <button type="submit" class="btn btn-primary mx-2" [disabled]="!loginForm.valid">Add Post</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
