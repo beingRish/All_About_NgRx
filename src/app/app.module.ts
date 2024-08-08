@@ -29,7 +29,7 @@ import { appReducer } from './store/app.state';
     HttpClientModule,
     AppRoutingModule,
     EffectsModule.forRoot([]),
-    StoreModule.forRoot(appReducer),
+    StoreModule.forRoot(appReducer), 
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],
   providers: [],

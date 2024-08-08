@@ -24,17 +24,24 @@
                         </button>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="!(isAuthenticated | async)">
                     <a class="nav-link" [routerLink]="['/auth']">
                         <button class="border border-1 border-secondry text-secondry bg-transparent p-1">
                             Login
                         </button>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item"  *ngIf="!(isAuthenticated | async)">
                     <a class="nav-link" [routerLink]="['/auth/signup']">
                         <button class="border border-1 border-secondry text-secondry bg-transparent p-1">
                             Signup
+                        </button>
+                    </a>
+                </li>
+                <li class="nav-item"  *ngIf="isAuthenticated | async">
+                    <a class="nav-link" [routerLink]="['/auth/signup']">
+                        <button class="border border-1 border-secondry text-secondry bg-transparent p-1">
+                            Logout
                         </button>
                     </a>
                 </li>
