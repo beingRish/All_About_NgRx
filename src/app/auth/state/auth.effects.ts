@@ -4,13 +4,17 @@ import { loginStart, loginSuccess } from "./auth.action";
 import { exhaustMap, map } from "rxjs";
 import { AuthService } from "src/app/services/auth.service";
 import { User } from "src/app/models/user.models";
+import { AppState } from "src/app/store/app.state";
+import { Store } from "@ngrx/store";
+import { setLoadingSpinner } from "src/app/store/Shared/shared.actions";
 
 
 @Injectable()
 export class AuthEffects {
     constructor(
         private actions$: Actions,
-        private authService: AuthService
+        private authService: AuthService,
+        private store: Store<AppState>
     ) { }
 
     login$ = createEffect(() => {
@@ -22,6 +26,7 @@ export class AuthEffects {
                     action.password
                 ).pipe(
                     map((data) => {
+                        this.store.dispatch(setLoadingSpinner({ status: false }))
                         const user = this.authService.formatUser(data);
                         return loginSuccess({ user });
                     })

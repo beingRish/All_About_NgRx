@@ -4,7 +4,7 @@
             <h1>Login</h1>
         </div>
         <div class="card-body">
-            <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="noEdit">
+            <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()" class="noEdit">
                 <div class="form-group">
                     <label>Enter Email</label>
                     <input type="email" class="form-control" formControlName="email">
