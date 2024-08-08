@@ -5,5 +5,5 @@ export interface AuthResponseData {
     email: string;
     refreshToken: string;
     localId: string;
-    registered: boolean;
+    registered?: boolean;
 }
