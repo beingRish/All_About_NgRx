@@ -3,7 +3,6 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { loginStart, loginSuccess } from "./auth.action";
 import { exhaustMap, map } from "rxjs";
 import { AuthService } from "src/app/services/auth.service";
-import { User } from "src/app/models/user.models";
 import { AppState } from "src/app/store/app.state";
 import { Store } from "@ngrx/store";
 import { setLoadingSpinner } from "src/app/store/Shared/shared.actions";
