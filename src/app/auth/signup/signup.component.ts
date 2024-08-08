@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/store/app.state';
-import { loginStart } from '../state/auth.action';
 import { setLoadingSpinner } from 'src/app/store/Shared/shared.actions';
+import { AppState } from 'src/app/store/app.state';
+import { signupStart } from '../state/auth.action';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.css']
 })
-export class LoginComponent implements OnInit{
+export class SignupComponent implements OnInit{
 
-  loginForm!: FormGroup;
+  signupForm!: FormGroup;
 
   constructor(
     private fb: FormBuilder,
@@ -21,14 +21,14 @@ export class LoginComponent implements OnInit{
 
   ngOnInit(): void {
     
-    this.loginForm = this.fb.group({
+    this.signupForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
   showEmailErrors() {
-    const emailForm = this.loginForm.get('email');
+    const emailForm = this.signupForm.get('email');
     if(emailForm?.touched && !emailForm.valid) {
       if(emailForm.errors?.['required']) {
         return 'Email is required';
@@ -40,9 +40,8 @@ export class LoginComponent implements OnInit{
     return
   }
 
-
   showPasswordErrors() {
-    const passwordForm = this.loginForm.get('password');
+    const passwordForm = this.signupForm.get('password');
     if(passwordForm?.touched && !passwordForm.valid) {
       if(passwordForm.errors?.['required']) {
         return 'Password is required';
@@ -54,13 +53,13 @@ export class LoginComponent implements OnInit{
     return
   }
 
-  onLoginSubmit() {
-    if(!this.loginForm.valid){
-      return
+  onSignupSubmit() {
+    if(!this.signupForm.valid){
+      return;
     }
-    const email = this.loginForm.value.email;
-    const password = this.loginForm.value.password;
+    const email = this.signupForm.value.email;
+    const password = this.signupForm.value.password;
     this.store.dispatch(setLoadingSpinner({status: true}))
-    this.store.dispatch(loginStart({ email, password }))
+    this.store.dispatch(signupStart({ email, password }))
   }
 }

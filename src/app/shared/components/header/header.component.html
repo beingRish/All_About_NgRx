@@ -1,48 +1,52 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container">
         <a class="navbar-brand" href="#">Posts</a>
-        <div id="navbarNav">
+        <button class="navbar-toggler" (click)="onNavTogle()" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon "></span>
+        </button>
+        <div class="collapse navbar-collapse" [class.show]="navOpen" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
                     <a class="nav-link" [routerLink]="['/']">
-                        <button class="border border-1 border-secondry text-secondry bg-transparent p-1">
+                        <!-- <button class="border border-1 border-secondry text-secondry bg-transparent p-1"> -->
                             Home
-                        </button>
+                        <!-- </button> -->
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" [routerLink]="['/posts']">
-                        <button class="border border-1 border-secondry text-secondry bg-transparent p-1">
+                        <!-- <button class="border border-1 border-secondry text-secondry bg-transparent p-1"> -->
                             Posts
-                        </button>
+                        <!-- </button> -->
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" [routerLink]="['/counter']">
-                        <button class="border border-1 border-secondry text-secondry bg-transparent p-1">
+                        <!-- <button class="border border-1 border-secondry text-secondry bg-transparent p-1"> -->
                             Counter
-                        </button>
+                        <!-- </button> -->
                     </a>
                 </li>
                 <li class="nav-item" *ngIf="!(isAuthenticated | async)">
                     <a class="nav-link" [routerLink]="['/auth']">
-                        <button class="border border-1 border-secondry text-secondry bg-transparent p-1">
+                        <!-- <button class="border border-1 border-secondry text-secondry bg-transparent p-1"> -->
                             Login
-                        </button>
+                        <!-- </button> -->
                     </a>
                 </li>
-                <li class="nav-item"  *ngIf="!(isAuthenticated | async)">
+                <li class="nav-item" *ngIf="!(isAuthenticated | async)">
                     <a class="nav-link" [routerLink]="['/auth/signup']">
-                        <button class="border border-1 border-secondry text-secondry bg-transparent p-1">
+                        <!-- <button class="border border-1 border-secondry text-secondry bg-transparent p-1"> -->
                             Signup
-                        </button>
+                        <!-- </button> -->
                     </a>
                 </li>
-                <li class="nav-item"  *ngIf="isAuthenticated | async">
-                    <a class="nav-link" [routerLink]="['/auth/signup']">
-                        <button class="border border-1 border-secondry text-secondry bg-transparent p-1">
+                <li class="nav-item" *ngIf="isAuthenticated | async">
+                    <a class="nav-link">
+                        <!-- <button class="border border-1 border-secondry text-secondry bg-transparent p-1"> -->
                             Logout
-                        </button>
+                        <!-- </button> -->
                     </a>
                 </li>
             </ul>

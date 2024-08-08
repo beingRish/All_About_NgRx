@@ -9,15 +9,21 @@ import { AppState } from 'src/app/store/app.state';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit{
+export class HeaderComponent implements OnInit {
+
+  navOpen: boolean = false;
   isAuthenticated!: Observable<boolean>
 
   constructor(
     private store: Store<AppState>
-  ){}
+  ) { }
 
   ngOnInit(): void {
     this.isAuthenticated = this.store.select(isAuthenticated);
+  }
+
+  onNavTogle() {
+    this.navOpen = !this.navOpen;;
   }
 
 }

@@ -1,10 +1,10 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-            <h1>Login</h1>
+            <h1>Signup</h1>
         </div>
         <div class="card-body">
-            <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()" class="noEdit">
+            <form [formGroup]="signupForm" (ngSubmit)="onSignupSubmit()" class="noEdit">
                 <div class="form-group">
                     <label>Enter Email</label>
                     <input type="email" class="form-control" formControlName="email">
@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="buttons text-end">
-                    <button type="submit" class="btn btn-primary mx-2" [disabled]="!loginForm.valid">Login</button>
+                    <button type="submit" class="btn btn-primary mx-2" [disabled]="!signupForm.valid">Signup</button>
                 </div>
             </form>
         </div>
