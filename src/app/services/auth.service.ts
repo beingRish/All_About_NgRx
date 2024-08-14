@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "../environments/environment";
 import { AuthResponseData } from "../models/AuthResponseData.model";
-import { BehaviorSubject, Observable } from "rxjs";
+import { Observable } from "rxjs";
 import { User } from "../models/user.models";
 import { Store } from "@ngrx/store";
 import { autoLogout } from "../auth/state/auth.action";
@@ -15,7 +15,6 @@ import { AppState } from "../store/app.state";
 
 export class AuthService {
 
-    user = new BehaviorSubject<User | null>(null)
     timeoutInterval: any;
 
     constructor(
