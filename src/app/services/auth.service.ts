@@ -2,8 +2,11 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "../environments/environment";
 import { AuthResponseData } from "../models/AuthResponseData.model";
-import { Observable } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 import { User } from "../models/user.models";
+import { Store } from "@ngrx/store";
+import { autoLogout } from "../auth/state/auth.action";
+import { AppState } from "../store/app.state";
 
 
 @Injectable({
@@ -11,9 +14,14 @@ import { User } from "../models/user.models";
 })
 
 export class AuthService {
+
+    user = new BehaviorSubject<User | null>(null)
     timeoutInterval: any;
 
-    constructor(private http: HttpClient) { }
+    constructor(
+        private http: HttpClient,
+        private store: Store<AppState>
+    ) { }
 
     login(email: string, password: string): Observable<AuthResponseData> {
         return this.http.post<AuthResponseData>(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.FIREBASE_API_KEY}`,
@@ -66,6 +74,7 @@ export class AuthService {
         const timeInterval = expirationDate - todaysDate;
 
         this.timeoutInterval = setTimeout(() => {
+            this.store.dispatch(autoLogout());
             // Logout functionality or get the refresh token
         }, timeInterval)
     }
@@ -84,6 +93,14 @@ export class AuthService {
             this.runTimeoutInterval(user);
             return user;
         }
-        return null;
+        return null
+    }
+
+    logout() {
+        localStorage.removeItem('userData');
+        if(this.timeoutInterval){
+            clearTimeout(this.timeoutInterval);
+            this.timeoutInterval = null;
+        }
     }
 }
