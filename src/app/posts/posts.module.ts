@@ -8,6 +8,8 @@ import { PostsRoutingModule } from "./posts-routing.module";
 import { StoreModule } from "@ngrx/store";
 import { postsReducer } from "./state/posts.reducer";
 import { POST_STATE_NAME } from "./state/posts.selector";
+import { EffectsModule } from "@ngrx/effects";
+import { PostsEffects } from "./state/posts.effects";
 
 @NgModule({
     declarations: [
@@ -20,6 +22,7 @@ import { POST_STATE_NAME } from "./state/posts.selector";
         ReactiveFormsModule,
         PostsRoutingModule,
         StoreModule.forFeature(POST_STATE_NAME, postsReducer),
+        EffectsModule.forFeature([PostsEffects])
     ],
 })
 

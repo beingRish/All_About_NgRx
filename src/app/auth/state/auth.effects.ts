@@ -36,7 +36,7 @@ export class AuthEffects {
                     catchError(errResp => {
                         this.store.dispatch(setLoadingSpinner({ status: false }))
                         const errorMessage = this.authService.getErrorMessage(
-                            errResp.error.error.message
+                            errResp?.error?.error?.message
                         )
                         return of(setErrorMessage({ message: errorMessage }));
                     })
