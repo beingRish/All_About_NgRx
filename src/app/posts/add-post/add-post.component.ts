@@ -11,7 +11,7 @@ import { addPost } from '../state/posts.action';
   templateUrl: './add-post.component.html',
   styleUrls: ['./add-post.component.css']
 })
-export class AddPostComponent implements OnInit{
+export class AddPostComponent implements OnInit {
 
   postForm!: FormGroup;
 
@@ -19,10 +19,10 @@ export class AddPostComponent implements OnInit{
     private fb: FormBuilder,
     private router: Router,
     private store: Store<AppState>
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-    
+
     this.postForm = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(6)]],
       description: ['', [Validators.required, Validators.minLength(10)]]
@@ -31,11 +31,11 @@ export class AddPostComponent implements OnInit{
 
   showTitleErrors() {
     const descriptionForm = this.postForm.get('title');
-    if(descriptionForm?.touched && !descriptionForm.valid) {
-      if(descriptionForm.errors?.['required']) {
+    if (descriptionForm?.touched && !descriptionForm.valid) {
+      if (descriptionForm.errors?.['required']) {
         return 'Title is required';
       }
-      if(descriptionForm?.errors?.['minlength']){
+      if (descriptionForm?.errors?.['minlength']) {
         return 'Title should be of minimum 6 characters length';
       }
     }
@@ -45,11 +45,11 @@ export class AddPostComponent implements OnInit{
 
   showDescriptionErrors() {
     const descriptionForm = this.postForm.get('description');
-    if(descriptionForm?.touched && !descriptionForm.valid) {
-      if(descriptionForm.errors?.['required']) {
+    if (descriptionForm?.touched && !descriptionForm.valid) {
+      if (descriptionForm.errors?.['required']) {
         return 'Description is required';
       }
-      if(descriptionForm?.errors?.['minlength']){
+      if (descriptionForm?.errors?.['minlength']) {
         return 'Description should be of minimum 10 characters length';
       }
     }
@@ -57,7 +57,7 @@ export class AddPostComponent implements OnInit{
   }
 
   onAddPost() {
-    if(!this.postForm.valid){
+    if (!this.postForm.valid) {
       return;
     }
 
@@ -66,7 +66,7 @@ export class AddPostComponent implements OnInit{
       description: this.postForm.value.description
     };
 
-    this.store.dispatch(addPost({post}))
+    this.store.dispatch(addPost({ post }))
     this.router.navigate(['/posts']);
   }
 
