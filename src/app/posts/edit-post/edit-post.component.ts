@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/app.state';
 import { getPostById } from '../state/posts.selector';
@@ -88,7 +88,6 @@ export class EditPostComponent implements OnInit, OnDestroy {
 
     // dispatch the action
     this.store.dispatch(updatePost({ post }))
-
     this.router.navigate(['/posts']);
   }
 

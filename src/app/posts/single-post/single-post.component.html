@@ -1,0 +1,8 @@
+<div *ngIf="post | async as postData">
+    <div>Id: {{ postData.id }}</div>
+    <div>Title: {{ postData.title }}</div>
+    <div>Description: {{ postData.description }}</div>
+</div>
+<div>
+    <button routerLink="['/posts']" type="button" class="btn btn-secondary mx-2" (click)="onBack()" >Back to Posts</button>
+</div>

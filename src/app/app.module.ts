@@ -17,6 +17,7 @@ import { AuthEffects } from './auth/state/auth.effects';
 import { AuthTokenInterceptor } from './services/AuthToken.interceptor';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { CustomSerializer } from './store/router/custom-serializer';
+import { SinglePostComponent } from './posts/single-post/single-post.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { CustomSerializer } from './store/router/custom-serializer';
     HomeComponent,
     HeaderComponent,
     LoadingSpinnerComponent,
+    SinglePostComponent,
   ],
   imports: [
     BrowserModule,

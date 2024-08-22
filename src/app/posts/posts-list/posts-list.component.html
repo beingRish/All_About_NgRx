@@ -4,7 +4,7 @@
             <div class="card">
                 <div class="card-header">
                     <h1>Posts List</h1>
-                    <button type="button" class="btn btn-info mt-2 mb-3">
+                    <button type="button" class="btn btn-success mt-2 mb-3">
                         <a [routerLink]="['/posts/add']">
                             <i class="fa fa-add" aria-hidden="true"></i>
                             Add Post</a>
@@ -32,7 +32,8 @@
                                             <td>
                                                 <div class="d-flex">
                                                     <button class="btn btn-primary" [routerLink]="['/posts/edit', post.id]">Update</button>&nbsp;
-                                                    <button class="btn btn-danger" (click)="onDeletePost(post.id ? post.id : '')">Delete</button>
+                                                    <button class="btn btn-danger" (click)="onDeletePost(post.id ? post.id : '')">Delete</button>&nbsp;
+                                                    <button class="btn btn-info" [routerLink]="['details', post.id]">Details</button>&nbsp;
                                                 </div>
                                             </td>
                                             
