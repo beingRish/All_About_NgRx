@@ -13,44 +13,45 @@ import { updatePost } from '../state/posts.action';
   templateUrl: './edit-post.component.html',
   styleUrls: ['./edit-post.component.css']
 })
-export class EditPostComponent implements OnInit, OnDestroy{
+export class EditPostComponent implements OnInit, OnDestroy {
 
   postForm!: FormGroup;
   postSubscription!: Subscription;
-  post!: Post;
+  post: Post | any;
 
   constructor(
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private store: Store<AppState>
-  ) {}
+    private store: Store<AppState>,
+    private router: Router
+  ) { }
 
-  ngOnInit(): void {    
-    
-    this.activatedRoute.paramMap.subscribe(params => {
-      const id = params.get('id');
-      this.postSubscription = this.store.select(getPostById, { id }).subscribe(data => {
-        this.post = data;
-        this.createForm();
-      })
-    })
+  ngOnInit(): void {
+    this.createForm();
+    this.postSubscription = this.store.select(getPostById).subscribe(post => {
+      if(post){
+        this.post = post;
+        this.postForm.patchValue({
+          title: post?.title,
+          description: post?.description
+        })
+      }
+    });
   }
 
   createForm() {
     this.postForm = new FormGroup({
-      title: new FormControl(this.post.title, [Validators.required, Validators.minLength(6)]),
-      description: new FormControl(this.post.description, [Validators.required, Validators.minLength(10)])
-    
+      title: new FormControl(null, [Validators.required, Validators.minLength(6)]),
+      description: new FormControl(null, [Validators.required, Validators.minLength(10)])
+
     })
   }
 
   showTitleErrors() {
     const descriptionForm = this.postForm?.get('title');
-    if(descriptionForm?.touched && !descriptionForm.valid) {
-      if(descriptionForm.errors?.['required']) {
+    if (descriptionForm?.touched && !descriptionForm.valid) {
+      if (descriptionForm.errors?.['required']) {
         return 'Title is required';
       }
-      if(descriptionForm?.errors?.['minlength']){
+      if (descriptionForm?.errors?.['minlength']) {
         return 'Title should be of minimum 6 characters length';
       }
     }
@@ -59,11 +60,11 @@ export class EditPostComponent implements OnInit, OnDestroy{
 
   showDescriptionErrors() {
     const descriptionForm = this.postForm?.get('description');
-    if(descriptionForm?.touched && !descriptionForm.valid) {
-      if(descriptionForm.errors?.['required']) {
+    if (descriptionForm?.touched && !descriptionForm.valid) {
+      if (descriptionForm.errors?.['required']) {
         return 'Description is required';
       }
-      if(descriptionForm?.errors?.['minlength']){
+      if (descriptionForm?.errors?.['minlength']) {
         return 'Description should be of minimum 10 characters length';
       }
     }
@@ -72,7 +73,7 @@ export class EditPostComponent implements OnInit, OnDestroy{
 
   onUpdatePost() {
 
-    if(!this.postForm.valid) {
+    if (!this.postForm.valid) {
       return;
     }
 
@@ -87,7 +88,7 @@ export class EditPostComponent implements OnInit, OnDestroy{
 
     // dispatch the action
     this.store.dispatch(updatePost({ post }))
-    
+
     this.router.navigate(['/posts']);
   }
 
@@ -96,6 +97,6 @@ export class EditPostComponent implements OnInit, OnDestroy{
   }
 
   ngOnDestroy(): void {
-   this.postSubscription.unsubscribe();
+    this.postSubscription.unsubscribe();
   }
 }
