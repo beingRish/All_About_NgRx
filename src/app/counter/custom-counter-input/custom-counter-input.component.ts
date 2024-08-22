@@ -21,6 +21,5 @@ export class CustomCounterInputComponent {
   }
   onAdd() {
     this.store.dispatch(customincrement({ count: +this.value }));
-    console.log(this.value);
   }
 }
