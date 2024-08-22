@@ -13,6 +13,7 @@ export class AuthTokenInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return this.store.select(getToken).pipe(
+            take(1),
             exhaustMap(token => {
                 if (token) {
                     const modifiedReq = req.clone({
