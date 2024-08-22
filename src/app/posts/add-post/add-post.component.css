@@ -33,3 +33,6 @@
     line-height: 1;
 }
 
+textarea {
+    height: 180px;
+}

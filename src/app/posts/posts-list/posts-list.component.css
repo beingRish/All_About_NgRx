@@ -24,3 +24,8 @@
     text-decoration: none;
     color: white;
 }
+
+
+.table-responsive {
+    margin: 0 -15px; /* Remove extra margin that might be affecting the card */
+}

@@ -16,9 +16,9 @@
                     <div class="text-danger">{{ showDescriptionErrors() }}</div>
                 </div>
 
-                <div class="buttons text-end">
+                <div class="buttons text-end d-flex">
                     <button type="button" class="btn btn-secondary mx-2" (click)="onBack()">Back</button>
-                    <button type="submit" class="btn btn-primary mx-2" [disabled]="!postForm.valid">Add Post</button>
+                    <button type="submit" class="btn btn-primary mx-2" [disabled]="!postForm.valid">Add</button>
                 </div>
             </form>
         </div>
