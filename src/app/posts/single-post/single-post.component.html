@@ -1,8 +1,26 @@
-<div *ngIf="post | async as postData">
-    <div>Id: {{ postData.id }}</div>
-    <div>Title: {{ postData.title }}</div>
-    <div>Description: {{ postData.description }}</div>
-</div>
-<div>
-    <button routerLink="['/posts']" type="button" class="btn btn-secondary mx-2" (click)="onBack()" >Back to Posts</button>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h1>Post Details</h1>
+            <button type="button" class="btn btn-success mt-2 mb-3" routerLink="['/posts']" (click)="onBack()">
+                Back to Posts
+            </button>
+        </div>
+        <div class="card-body">
+            <div class="row" *ngIf="post | async as postData">
+                <div class="col-md-6">
+                    <label>Id</label>
+                    <span class="value">{{ postData.id }}</span>
+                </div>
+                <div class="form-group">
+                    <label>Title</label>
+                    <span class="value">{{ postData.title }}</span>
+                </div>
+                <div class="form-group">
+                    <label> Description</label>
+                    <span class="value">{{ postData.description }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
