@@ -4,11 +4,11 @@ import { User } from "src/app/models/user.models";
 export const LOGIN_START = '[auth page] login start';
 export const LOGIN_SUCCESS = '[auth page] login success';
 export const LOGIN_FAIL = '[auth page] login fail';
-
 export const SIGNUP_START = '[auth page] signup start';
 export const SIGNUP_SUCCESS = '[auth page] signup success';
 export const AUTO_LOGIN_ACTION = '[auth page] auto login';
 export const LOGOUT_ACTION = '[auth page] auto logout';
+export const DUMMY_ACTION = '[dummy action]'
 
 export const loginStart = createAction(
     LOGIN_START, 
@@ -37,4 +37,8 @@ autoLogin = createAction(
 
 export const autoLogout = createAction(
     LOGOUT_ACTION
+);
+
+export const dummyAction = createAction(
+    DUMMY_ACTION
 );
