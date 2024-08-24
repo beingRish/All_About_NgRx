@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class SinglePostComponent implements OnInit{
 
-  post!: Observable<Post | null>;
+  post!: Observable<Post | null | undefined>;
 
   constructor(
     private store: Store<AppState>,
