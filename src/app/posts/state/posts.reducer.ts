@@ -1,21 +1,24 @@
 import { createReducer, on } from "@ngrx/store";
 import { initialState, postsAdapter } from "./posts.state";
-import { Post } from "src/app/models/posts.model";
-import {  
-    addPostSuccess, 
-    deletePostSuccess, 
-    loadPostsSuccess,  
+import {
+    addPostSuccess,
+    deletePostSuccess,
+    loadPostsSuccess,
     updatePostSuccess
 } from "./posts.action";
 
-
-
 const _postsReducer = createReducer(
-    initialState, 
+    initialState,
 
     // addPostSuccess
     on(addPostSuccess, (state: any, action: any) => {
-        return postsAdapter.addOne(action.post, state)
+        return postsAdapter.addOne(
+            action.post,
+            {
+                ...state,
+                count: state.count + 1
+            }
+        );
     }),
 
     // updatePostSuccess
@@ -24,7 +27,7 @@ const _postsReducer = createReducer(
     }),
 
     // deletePostSuccess
-    on(deletePostSuccess, (state: any,  { id }) => {
+    on(deletePostSuccess, (state: any, { id }) => {
         return postsAdapter.removeOne(id, state);
     }),
 
